@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('drivers', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdfor(User::class);
+            $table->string('year');
+            $table->string('make');
+            $table->string('model');
+            $table->string('color');
+            $table->string('license_plate');
             $table->timestamps();
         });
     }
