@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use  App\Models\User;
+use App\Notifications\LoginNeedsVerification;
+
 class LoginController extends Controller
 {
     public function submit(Request  $request )
@@ -25,7 +27,7 @@ if(!$user){
 
         //send a user one time code for use
 
-$user->notify();
+$user->notify(new LoginNeedsVerification());
         //reurn back a response
 
 
