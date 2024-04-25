@@ -30,6 +30,6 @@ if(!$user){
 $user->notify(new LoginNeedsVerification());
         //reurn back a response
 
-
+return response()->json(['message'=> 'Text message notification sent '],200);
     }
 }
