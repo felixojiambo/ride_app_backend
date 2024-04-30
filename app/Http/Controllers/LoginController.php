@@ -43,7 +43,7 @@ $user=User::where('phone', $request->phone)->where('login_code',$request->login_
         //is the code provided the same as one saved 
 
         //if so, return  back an auth token
-
+if($user){return $user->createToken($request->login_code)->plainTextToken;}
         // if not return back a message
     }
 }
