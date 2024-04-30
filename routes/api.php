@@ -9,3 +9,7 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 Route::post('/login', [LoginController::class,'submit']);
 Route::post('/login/verify', [LoginController::class,'verify']);
+Route::group(['middleware'=>'auth:sanctum'],function(){
+    Route::get('/user',function (Request $request) { return $request->user();
+    });
+});
