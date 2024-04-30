@@ -39,7 +39,7 @@ return response()->json(['message'=> 'Text message notification sent '],200);
     'login_code'=>'required|numeric|between:111111,999999'
 ]);
         //find user 
-
+$user=User::where('phone', $request->phone)->where('login_code',$request->login_code)->first();
         //is the code provided the same as one saved 
 
         //if so, return  back an auth token
