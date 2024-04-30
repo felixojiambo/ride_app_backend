@@ -32,4 +32,18 @@ $user->notify(new LoginNeedsVerification());
 
 return response()->json(['message'=> 'Text message notification sent '],200);
     }
+    public function verify(Request $request){
+        //validate incomming request
+     $request->validate([
+    'phone'=> 'required|numeric|min:10',
+    'login_code'=>'required|numeric|between:111111,999999'
+]);
+        //find user 
+
+        //is the code provided the same as one saved 
+
+        //if so, return  back an auth token
+
+        // if not return back a message
+    }
 }
