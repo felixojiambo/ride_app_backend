@@ -9,17 +9,19 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use App\Models\Trip;
 
 class TripAccepted
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-
+    public $trip;
     /**
      * Create a new event instance.
      */
-    public function __construct()
+    public function __construct(Trip $trip)
     {
         //
+        $this->trip = $trip;
     }
 
     /**
