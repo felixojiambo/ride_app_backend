@@ -18,6 +18,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('/driver', [DriverController::class,'update']);
 
     Route::post('/trip', [TripController::class,'store']);
+    Route::get('/trip/{trip}', [TripController::class,'show']);
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
