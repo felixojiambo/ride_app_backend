@@ -75,6 +75,15 @@ class TripController extends Controller
     }
     public function location(Request $request, Trip $trip){
         //driver current location
+        $request->whenMissingvalidate([
+            'driver_location'=> 'required'
+        ]);
+        $trip->update([
+            'driver_location'=>$request->driver_location,
+        ]);
+        $trip->load('driver.user');
+        return $trip;
+       
     }
 
 
