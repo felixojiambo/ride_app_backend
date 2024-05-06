@@ -57,9 +57,17 @@ class TripController extends Controller
     }
     public function start(Request $request, Trip $trip){
         //driver has started a trip
+        
+        $trip->update([
+            'is_started'=>true,
+        ]);
+        $trip->load('driver.user');
+        return $trip;
     }
     public function end(Request $request, Trip $trip){
         //driver ends trip
+
+        
     }
     public function location(Request $request, Trip $trip){
         //driver current location
