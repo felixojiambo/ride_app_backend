@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Trip;
+use App\Events\TripAccepted;
 
 class TripController extends Controller
 {
@@ -53,7 +54,7 @@ class TripController extends Controller
             'driver_location' => $request->driver_location,
         ]);
         $trip->load('driver.user');
-
+        TripAccepted::dispatch($trip);
         return $trip;
     }
     public function start(Request $request, Trip $trip)
