@@ -10,18 +10,20 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Trip;
-
+use App\Models\User;
 class TripAccepted
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
     public $trip;
+    public $user;
     /**
      * Create a new event instance.
      */
-    public function __construct(Trip $trip)
+    public function __construct(Trip $trip,User $user)
     {
         //
         $this->trip = $trip;
+        $this->user = $user;
     }
 
     /**
@@ -32,7 +34,7 @@ class TripAccepted
     public function broadcastOn(): array
     {
         return [
-            new PrivateChannel('channel-name'),
+            new  Channel('passenger_'. $this->user->id),
         ];
     }
 }
