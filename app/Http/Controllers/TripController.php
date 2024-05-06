@@ -33,9 +33,10 @@ class TripController extends Controller
         if ($trip->user->id = $request->user()->id) {
             return $trip;
         }
+        if($trip->driver&& $request->user()->driver){
         if ($trip->driver->id = $request->user()->driver->id) {
             return $trip;
-        }
+        }}
         return response()->json(['message' => 'Cannot find this trip'], 404);
     }
 }
